@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Dangerous Survival</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Menu de démarrage -->
+<div id="menu">
+<h1>Dangerous Survival</h1>
+<button onclick="startGame()">Start Game</button>
+</div>
+
+<!-- Canvas du jeu -->
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+
+<!-- écran game over -->
+<div id="gameOver" style="display:none">
+<h2>Game Over</h2>
+<button onclick="restartGame()">Restart</button>
+</div>
+
+<script src="controls.js"></script>
+<script src="player.js"></script>
+<script src="obstacles.js"></script>
+<script src="bossAI.js"></script>
+<script src="projectiles.js"></script>
+<script src="explosionFX.js"></script>
+<script src="effects.js"></script>
+<script src="collisions.js"></script>
+<script src="leaderboard.js"></script>
+<script src="ui.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
