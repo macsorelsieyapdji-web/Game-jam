@@ -2,34 +2,51 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nothing is Safe – Accueil</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
 </head>
 
 <body class="home">
+  <div class="screen-overlay"></div>
 
   <div class="home-container">
-    <h1>Nothing is Safe</h1>
-    <p class="subtitle">Survive in a world where everything can betray you.</p>
+    <header>
+      <h1 class="glitch" data-text="Nothing is Safe">Nothing is Safe</h1>
+      <p class="subtitle">Surveillez vos arrières. Tout peut vous trahir.</p>
+    </header>
 
-    <!-- BOUTON PLAY -->
-    <button class="play-btn" onclick="location.href='game.html'">▶ Play</button>
-
-    <!-- MENU PRINCIPAL -->
-    <div class="menu-grid">
-      <button class="menu-btn" onclick="location.href='options.html'">Options</button>
-      <button class="menu-btn" onclick="location.href='shop.html'">Shop</button>
-      <button class="menu-btn" onclick="localStorage.setItem('mode','hardcore')">Mode Hardcore</button>
-      <button class="menu-btn" onclick="localStorage.setItem('mode','normal')">Mode Normal</button>
+    <div class="play-section">
+      <button class="play-btn" onclick="location.href='game.html'">
+        <span class="icon">▶</span> LANCER LA SURVIE
+      </button>
     </div>
 
-    <!-- NIVEAU DE DÉPART -->
+    <div class="menu-grid">
+      <button class="menu-btn" onclick="location.href='options.html'">⚙ OPTIONS</button>
+      <button class="menu-btn" onclick="location.href='shop.html'">🛒 BOUTIQUE</button>
+      <button class="menu-btn mode-hardcore" onclick="setMode('hardcore')">💀 HARDCORE</button>
+      <button class="menu-btn mode-normal" onclick="setMode('normal')">🛡️ NORMAL</button>
+    </div>
+
     <div class="level-box">
-      <label>Niveau de départ :</label><br>
+      <label for="startLevel">Difficulté initiale : <span id="levelValue">1</span></label>
       <input id="startLevel" type="range" min="1" max="10" value="1"
-             oninput="localStorage.setItem('startLevel', this.value)">
+             oninput="updateLevel(this.value)">
     </div>
   </div>
 
+  <script>
+    // Petite fonction pour mettre à jour l'affichage du niveau en temps réel
+    function updateLevel(val) {
+      document.getElementById('levelValue').innerText = val;
+      localStorage.setItem('startLevel', val);
+    }
+    function setMode(mode) {
+      localStorage.setItem('mode', mode);
+      alert("Mode " + mode + " activé !");
+    }
+  </script>
 </body>
 </html>
