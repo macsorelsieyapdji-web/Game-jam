@@ -1,17 +1,82 @@
-body{
-background:black;
-color:white;
-text-align:center;
-font-family:Arial;
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
-canvas{
-border:2px solid white;
-display:block;
-margin:auto;
+/* PAGE D’ACCUEIL */
+body.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-button{
-padding:10px 20px;
-font-size:18px;
+.home-container {
+  text-align: center;
+}
+
+.subtitle {
+  margin-top: -10px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.play-btn {
+  padding: 15px 40px;
+  font-size: 22px;
+  cursor: pointer;
+  background: #00bcd4;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  transition: 0.2s;
+}
+
+.play-btn:hover {
+  background: #0097a7;
+}
+
+.menu-grid {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.menu-btn {
+  padding: 12px 25px;
+  background: #444;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menu-btn:hover {
+  background: #666;
+}
+
+.level-box {
+  margin-top: 20px;
+  color: #ccc;
+}
+
+/* JEU */
+#hud {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 20px;
+}
+
+#gameCanvas {
+  background: #222;
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #444;
 }

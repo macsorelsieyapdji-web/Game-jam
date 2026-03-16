@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Nothing is Safe – Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HUD -->
+  <div id="hud">
+    <span id="score">Score: 0</span>
+    <span id="health">Health: 100</span>
+    <span id="level">Level: 1</span>
+  </div>
+
+  <!-- CANVAS DU JEU -->
+  <canvas id="gameCanvas" width="600" height="600"></canvas>
+
+  <!-- ÉCRAN DE GAME OVER -->
+  <div id="gameOver" class="hidden">
+    <h1>GAME OVER</h1>
+    <p id="finalScore"></p>
+    <button onclick="startGame()">Retry</button>
+    <button onclick="location.href='index.html'">Home</button>
+  </div>
+
+  <!-- SCRIPTS DU JEU -->
+  <script src="js/utils.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/objects.js"></script>
+  <script src="js/collisions.js"></script>
+  <script src="js/corruption.js"></script>
+  <script src="js/game.js"></script>
+
+</body>
+</html>

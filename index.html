@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Dangerous Survival</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Nothing is Safe – Accueil</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="home">
 
-<!-- Menu de démarrage -->
-<div id="menu">
-<h1>Dangerous Survival</h1>
-<button onclick="startGame()">Start Game</button>
-</div>
+  <div class="home-container">
+    <h1>Nothing is Safe</h1>
+    <p class="subtitle">Survive in a world where everything can betray you.</p>
 
-<!-- Canvas du jeu -->
-<canvas id="gameCanvas" width="800" height="600"></canvas>
+    <!-- BOUTON PLAY -->
+    <button class="play-btn" onclick="location.href='game.html'">▶ Play</button>
 
-<!-- écran game over -->
-<div id="gameOver" style="display:none">
-<h2>Game Over</h2>
-<button onclick="restartGame()">Restart</button>
-</div>
+    <!-- MENU PRINCIPAL -->
+    <div class="menu-grid">
+      <button class="menu-btn" onclick="location.href='options.html'">Options</button>
+      <button class="menu-btn" onclick="location.href='shop.html'">Shop</button>
+      <button class="menu-btn" onclick="localStorage.setItem('mode','hardcore')">Mode Hardcore</button>
+      <button class="menu-btn" onclick="localStorage.setItem('mode','normal')">Mode Normal</button>
+    </div>
 
-<script src="controls.js"></script>
-<script src="player.js"></script>
-<script src="obstacles.js"></script>
-<script src="bossAI.js"></script>
-<script src="projectiles.js"></script>
-<script src="explosionFX.js"></script>
-<script src="effects.js"></script>
-<script src="collisions.js"></script>
-<script src="leaderboard.js"></script>
-<script src="ui.js"></script>
-<script src="main.js"></script>
+    <!-- NIVEAU DE DÉPART -->
+    <div class="level-box">
+      <label>Niveau de départ :</label><br>
+      <input id="startLevel" type="range" min="1" max="10" value="1"
+             oninput="localStorage.setItem('startLevel', this.value)">
+    </div>
+  </div>
 
 </body>
 </html>
