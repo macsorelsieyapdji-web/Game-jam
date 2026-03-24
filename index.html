@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nothing is Safe – Accueil</title>
+
+  <!-- Ton CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
 </head>
 
@@ -18,7 +22,7 @@
     </header>
 
     <div class="play-section">
-      <button class="play-btn" onclick="location.href='game.html'">
+      <button class="play-btn" onclick="startGamePage()">
         <span class="icon">▶</span> LANCER LA SURVIE
       </button>
     </div>
@@ -37,16 +41,7 @@
     </div>
   </div>
 
-  <script>
-    // Petite fonction pour mettre à jour l'affichage du niveau en temps réel
-    function updateLevel(val) {
-      document.getElementById('levelValue').innerText = val;
-      localStorage.setItem('startLevel', val);
-    }
-    function setMode(mode) {
-      localStorage.setItem('mode', mode);
-      alert("Mode " + mode + " activé !");
-    }
-  </script>
+  <!-- Ton script JS -->
+  <script src="js/home.js"></script>
 </body>
 </html>

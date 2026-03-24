@@ -16,23 +16,18 @@
   </div>
 
   <!-- CANVAS DU JEU -->
-  <canvas id="gameCanvas" width="600" height="600"></canvas>
+  <canvas id="gameCanvas" width="800" height="450"></canvas>
 
   <!-- ÉCRAN DE GAME OVER -->
   <div id="gameOver" class="hidden">
     <h1>GAME OVER</h1>
     <p id="finalScore"></p>
-    <button onclick="startGame()">Retry</button>
+    <button onclick="location.reload()">Retry</button>
     <button onclick="location.href='index.html'">Home</button>
   </div>
 
-  <!-- SCRIPTS DU JEU -->
-  <script src="js/utils.js"></script>
-  <script src="js/player.js"></script>
-  <script src="js/objects.js"></script>
-  <script src="js/collisions.js"></script>
-  <script src="js/corruption.js"></script>
-  <script src="js/game.js"></script>
-  
+  <!-- CHARGEMENT DU MOTEUR DE JEU -->
+  <script type="module" src="js/game.js"></script>
+
 </body>
 </html>
