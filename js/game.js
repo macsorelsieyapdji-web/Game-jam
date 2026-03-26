@@ -1,3 +1,23 @@
+/* -------- SYSTÈME AUDIO -------- */
+const ambientSound = new Audio("sigmamusicart-horror-394969.mp3");
+ambientSound.loop = true; // Pour que la musique recommence à la fin
+ambientSound.volume = 0.4; // Volume modéré pour l'ambiance
+
+function startMusic() {
+    // On essaie de jouer la musique
+    ambientSound.play().catch(error => {
+        console.log("Le son attend que tu cliques sur le jeu pour démarrer.");
+    });
+}
+
+function stopMusic() {
+    ambientSound.pause();
+    ambientSound.currentTime = 0; 
+}
+
+
+
+
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -59,8 +79,8 @@ function drawGround() {
 /* ------------------------------------------------------- */
 
 function initGame() {
-    player = new Player(100, canvas.height / 2);
-    resetGameState();
+    player = new Player(100, canvas.height - 138); 
+    startMusic(); // <--- LA MUSIQUE DÉMARRE ICI
     startNewRound();
     gameLoop();
 }
@@ -237,6 +257,22 @@ document.getElementById("restartBtn").addEventListener("click", () => {
     console.log("Partie réinitialisée !");
 });
 
+
+document.getElementById("restartBtn").addEventListener("click", () => {
+    document.getElementById("gameOverScreen").style.display = "none";
+    
+    level = 1;
+    money = 0;
+    gameOver = false;
+    
+    resetGameState();
+    player = new Player(100, canvas.height - 138); 
+    startMusic(); // <--- RELANCE LA MUSIQUE
+    startNewRound();
+});
+
+
+
 window.addEventListener("keydown", (e) => {
     if ((e.key === "r" || e.key === "R") && gameOver) {
         level = 1;
@@ -266,3 +302,13 @@ document.getElementById("restartBtn").addEventListener("click", () => {
     startNewRound();
     gameOver = false;
 });
+
+
+
+// Force la lecture au premier clic sur l'écran
+window.addEventListener("click", () => {
+    if (ambientSound.paused) {
+        ambientSound.play();
+        console.log("Musique démarrée par clic forcé");
+    }
+}, { once: true }); // Ne s'exécute qu'une seule fois
