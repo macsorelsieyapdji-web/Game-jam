@@ -13,16 +13,49 @@
     <h1 class="glitch" data-text="OPTION">OPTION</h1>
     <p class="subtitle">Modifie tes paramatre pour te rendre le jeu le plus agreable possible</p>
     
-    <!--Curseur de réglage de la difficulté-->
-    <div class="btn-secondary">
-        <label for="difficulte">Difficulté</label>
-        <input type="range" id="difficulte" name="difficulte" min="0" max="100" value="50" class="custom-slider">
-        <span id="volume-value">50%</span>
+    <!--tableau de choix du type de parametre-->
+    <div class="option-screen">
+        <nav class="option-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'audio')">AUDIO</button>
+            <button class="tab-btn" onclick="openTab(event 'video')">VIDEO</button>
+            <button class="tab-btn" onclick="openTab(event, 'gameplay')">JEU</button>
+        </nav>
+        
+        <div class="option-content">
+            <div id="audio" class="tab-content" style="display:block;">
+                <h3>Parametre audio</h3>
+                <div class="option-item">
+                    <label>Volume Général</label>
+                    <input type="range" class="custom-slider">
+                </div>
+            </div>
+
+            <div id="video" class="tab-content" style="display:none;">
+                <h3>Parametre video</h3>
+                <div class="option-item">
+                    <label>Luminosité</label>
+                    <input type="range" class="custom-slider">
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!--fefefefe-->
+    <div class="btn-secondary">
+
+    </div>
+
+    <!--Curseur de réglage de la difficulté-->
+        <div class="btn-secondary">
+            <label for="difficulte">Difficulté</label>
+            <input type="range" id="difficulte" name="difficulte" min="0" max="100" value="50" class="custom-slider">
+            <span id="volume-value">50%</span>
+        </div>
 
     <!--bouton de retour au menu principal-->
     <button class="btn-secondary" onclick="location.href='index.html'">
         ⬅ Retour au menu
       </button>
+    </div>
 </body>
 </html>
