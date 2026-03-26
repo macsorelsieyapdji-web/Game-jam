@@ -6,10 +6,10 @@ function buy(type) {
     let cost = 0;
 
     switch (type) {
-        case "damage": cost = 50; break;
-        case "speed": cost = 40; break;
-        case "health": cost = 60; break;
-        case "multishot": cost = 100; break;
+        case "damage":   cost = 150; break;  // était 50
+        case "speed":    cost = 120; break;  // était 40
+        case "health":   cost = 180; break;  // était 60
+        case "multishot": cost = 300; break; // était 100
     }
 
     if (money < cost) {
@@ -21,7 +21,6 @@ function buy(type) {
     localStorage.setItem("money", money);
     document.getElementById("moneyDisplay").innerText = money;
 
-    // On stocke l'amélioration pour le prochain niveau
     let upgrades = JSON.parse(localStorage.getItem("upgrades") || "[]");
     upgrades.push(type);
     localStorage.setItem("upgrades", JSON.stringify(upgrades));

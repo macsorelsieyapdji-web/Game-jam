@@ -8,7 +8,7 @@ let enemyBullets = [];
 let boss = null;
 
 let level = parseInt(localStorage.getItem("currentLevel") || "1", 10);
-let money = parseInt(localStorage.getItem("money") || "0", 10);
+let money = parseInt(localStorage.getItem("money") || "500", 10);
 let gameOver = false;
 
 /* -------- SPAWN PROGRESSIF -------- */
@@ -101,7 +101,7 @@ function spawnBossForLevel(level) {
 }
 
 function onZombieKilled() {
-    money += 10;
+    money += 5; // réduit à 5 par kill
     localStorage.setItem("money", money);
 
     const bonusTypes = ["health", "speed", "damage", "multishot"];
@@ -113,7 +113,7 @@ function onBossDefeated() {
     level++;
     localStorage.setItem("currentLevel", level);
 
-    money += 100;
+    money += 50; // bonus boss réduit à 50
     localStorage.setItem("money", money);
 
     location.href = "shop.html";
