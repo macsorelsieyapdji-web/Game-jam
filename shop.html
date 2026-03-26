@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique – Nothing is Safe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="home">
+
+  <div class="background-anim"></div>
+
+  <div class="home-container">
+    <h1 class="glitch" data-text="BOUTIQUE">BOUTIQUE</h1>
+    <p class="subtitle">Améliore ton survivant avant le prochain niveau</p>
+
+    <h2 style="margin-top:20px;">💰 Argent : <span id="moneyDisplay">0</span></h2>
+
+    <div class="menu-buttons">
+
+      <button class="btn-secondary" onclick="buy('damage')">
+        + Dégâts (50$)
+      </button>
+
+      <button class="btn-secondary" onclick="buy('speed')">
+        + Vitesse (40$)
+      </button>
+
+      <button class="btn-secondary" onclick="buy('health')">
+        + Vie Max (60$)
+      </button>
+
+      <button class="btn-secondary" onclick="buy('multishot')">
+        Tir Multiple (100$)
+      </button>
+
+      <button class="btn-main" onclick="startNextLevel()">
+        ▶ Continuer au niveau suivant
+      </button>
+
+      <button class="btn-secondary" onclick="location.href='index.html'">
+        ⬅ Retour au menu
+      </button>
+
+    </div>
+  </div>
+
+  <script src="js/shop.js"></script>
+</body>
+</html>
