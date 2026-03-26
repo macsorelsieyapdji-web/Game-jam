@@ -11,6 +11,12 @@ let level = parseInt(localStorage.getItem("currentLevel") || "1", 10);
 let money = parseInt(localStorage.getItem("money") || "0", 10);
 let gameOver = false;
 
+/* -------- SPAWN PROGRESSIF -------- */
+let spawnQueue = [];
+let spawnTimer = 0;
+const SPAWN_INTERVAL = 120; // ~2 secondes entre chaque zombie
+/* ---------------------------------- */
+
 /* -------- BACKGROUND QUI CHANGE À CHAQUE NIVEAU -------- */
 function drawBackground() {
     const backgrounds = [
@@ -65,6 +71,8 @@ function resetGameState() {
     enemyBullets = [];
     boss = null;
     gameOver = false;
+    spawnQueue = [];
+    spawnTimer = 0;
 }
 
 function startNewRound() {
@@ -73,11 +81,13 @@ function startNewRound() {
 
 function spawnZombies(level) {
     zombies = [];
+    spawnQueue = [];
+    spawnTimer = 0;
     const count = 5 + level * 2;
 
     for (let i = 0; i < count; i++) {
-        zombies.push(new Zombie(
-            canvas.width + Math.random() * 300,
+        spawnQueue.push(new Zombie(
+            canvas.width + 50,
             0,
             level
         ));
@@ -105,8 +115,8 @@ function onBossDefeated() {
 
     money += 100;
     localStorage.setItem("money", money);
-    
-            location.href = "shop.html";
+
+    location.href = "shop.html";
 }
 
 function setGameOver() {
@@ -124,6 +134,16 @@ function gameLoop() {
 }
 
 function update() {
+    /* -------- SPAWN PROGRESSIF : un zombie à la fois -------- */
+    if (spawnQueue.length > 0) {
+        spawnTimer++;
+        if (spawnTimer >= SPAWN_INTERVAL) {
+            zombies.push(spawnQueue.shift());
+            spawnTimer = 0;
+        }
+    }
+    /* -------------------------------------------------------- */
+
     player.update();
 
     zombies.forEach(z => z.update(player));
@@ -132,10 +152,15 @@ function update() {
     bullets.forEach(b => b.update());
     enemyBullets.forEach(b => b.update());
 
+    // Nettoyer les balles mortes
+    bullets = bullets.filter(b => b.alive);
+    enemyBullets = enemyBullets.filter(b => b.alive);
+
     handleZombieCollisions(player, zombies, bullets);
     handleBossCollisions(player, boss, bullets, enemyBullets);
 
-    const allZombiesDead = zombies.every(z => !z.alive);
+    // Tous les zombies morts ET plus aucun en attente de spawn
+    const allZombiesDead = zombies.every(z => !z.alive) && spawnQueue.length === 0;
 
     if (allZombiesDead && !boss) {
         if (level % 2 === 0) {
@@ -169,6 +194,10 @@ function drawHUD() {
     ctx.fillText("Niveau : " + level, 20, 30);
     ctx.fillText("Vie : " + player.health + "/" + player.maxHealth, 20, 55);
     ctx.fillText("💰 " + money, 20, 80);
+
+    // Affiche le nombre de zombies restants (en attente + vivants)
+    const remaining = zombies.filter(z => z.alive).length + spawnQueue.length;
+    ctx.fillText("🧟 " + remaining, 20, 105);
 }
 
 function drawGameOver() {

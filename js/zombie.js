@@ -11,7 +11,7 @@ class Zombie {
         this.height = 56;
         this.speed = 0.6 + level * 0.1;
         this.maxHealth = 40 + level * 10;
-        this.health = this.maxHealth;
+        this.health = this.maxHealth; // ✅ vie PLEINE au spawn
         this.alive = true;
 
         this.vy = 0;
@@ -47,9 +47,12 @@ class Zombie {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
 
+        // ✅ Barre rouge complète en fond
         ctx.fillStyle = "#ff0000";
         ctx.fillRect(this.x, this.y - 8, this.width, 5);
+
+        // ✅ Barre verte proportionnelle à la vie ACTUELLE / vie MAX
         ctx.fillStyle = "#00ff00";
-        ctx.fillRect(this.x, this.y - 8, this.width * (this.health / 100), 5);
+        ctx.fillRect(this.x, this.y - 8, this.width * (this.health / this.maxHealth), 5);
     }
 }

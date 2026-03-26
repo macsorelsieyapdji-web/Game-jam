@@ -12,7 +12,7 @@ class Player {
         this.speed = 4;
         this.health = 100;
         this.maxHealth = 100;
-        this.damage = 10;
+        this.damage = 20; // ✅ Dégâts augmentés (20 au lieu de 10)
         this.multishot = false;
 
         this.vy = 0;
@@ -41,7 +41,7 @@ class Player {
 
         window.addEventListener("keydown", e => {
             this.keys[e.key] = true;
-            this.keys[e.code] = true; // ← IMPORTANT pour "Space"
+            this.keys[e.code] = true;
         });
 
         window.addEventListener("keyup", e => {
@@ -80,8 +80,7 @@ class Player {
         if (
             (this.keys[" "] ||
              this.keys["Space"] ||
-             this.keys["Spacebar"] ||
-             this.keys["Space"]) &&
+             this.keys["Spacebar"]) &&
             this.shootCooldown === 0
         ) {
             this.shoot();
@@ -112,6 +111,7 @@ class Player {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
 
+        // Barre de vie joueur
         ctx.fillStyle = "#ff0000";
         ctx.fillRect(this.x, this.y - 10, this.width, 5);
         ctx.fillStyle = "#00ff00";
