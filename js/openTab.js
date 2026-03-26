@@ -2,7 +2,7 @@ function openTab(evt, tabName) {
     // 1. Cacher tous les contenus d'onglets
     const contents = document.getElementsByClassName("tab-content");
     for (let i = 0; i < contents.length; i++) {
-        contents[i].style.display = "none";
+        contents[i].style.display = "none";3
     }
 
     // 2. Enlever la classe "active" de tous les boutons
