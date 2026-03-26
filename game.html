@@ -33,10 +33,16 @@
 
   <canvas id="gameCanvas" width="960" height="540"></canvas>
 
-  <div id="gameOverScreen" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(0,0,0,0.85); padding: 40px; border: 2px solid #ff0033; border-radius: 15px; box-shadow: 0 0 30px #ff0033;">
-    <h1 style="color: #ff0033; font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 20px;">GAME OVER</h1>
-    <button id="restartBtn" class="btn-main" style="cursor: pointer;">🔄 RECOMMENCER</button>
-    <button onclick="location.href='index.html'" class="btn-secondary" style="margin-top: 10px; display: block; width: 100%;">🏠 MENU PRINCIPAL</button>
+  <div id="gameOverScreen" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(0,0,0,0.9); padding: 40px; border: 2px solid #ff0033; border-radius: 15px; box-shadow: 0 0 30px #ff0033; z-index: 100;">
+    <h1 style="color: #ff0033; font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 10px;">GAME OVER</h1>
+    
+    <div style="margin-bottom: 30px; font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; color: #eee;">
+        <p>Niveau atteint : <span id="finalLevel" style="color: #ff6600; font-weight: bold;">0</span></p>
+        <p>Argent récolté : <span id="finalMoney" style="color: #ffcc00; font-weight: bold;">0</span>💰</p>
+    </div>
+
+    <button id="restartBtn" class="btn-main" style="cursor: pointer; width: 100%; margin-bottom: 10px;">🔄 RECOMMENCER</button>
+    <button onclick="location.href='index.html'" class="btn-secondary" style="width: 100%;">🏠 MENU PRINCIPAL</button>
 </div>
 
 
