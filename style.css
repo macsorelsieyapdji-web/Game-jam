@@ -38,34 +38,50 @@ body {
   animation: fadeIn 1.2s ease-out;
 }
 
+/* GLITCH FIX COMPLET */
 .glitch {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   color: #fff;
   position: relative;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 1px;
+  line-height: 1;              /* FIX ALIGNEMENT */
+  display: inline-block;       /* FIX ALIGNEMENT */
 }
 
+/* Copies glitch */
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
   position: absolute;
-  left: 0;
   top: 0;
-  opacity: 0.7;
+  left: 0;
+  width: 100%;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
+/* Rouge */
 .glitch::before {
   color: #ff0033;
-  transform: translate(3px, 0);
-  animation: glitch 0.8s infinite;
+  animation: glitch 1s infinite;
 }
 
+/* Cyan */
 .glitch::after {
   color: #00eaff;
-  transform: translate(-3px, 0);
-  animation: glitch 0.8s infinite reverse;
+  animation: glitch 1s infinite reverse;
+}
+
+/* Animation glitch */
+@keyframes glitch {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(1px, -1px); }
+  40% { transform: translate(-1px, 1px); }
+  60% { transform: translate(1px, 0); }
+  80% { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
 }
 
 .subtitle {
@@ -118,7 +134,7 @@ body {
 .game canvas {
   display: block;
   margin: 0 auto;
-  background: transparent; /* IMPORTANT POUR VOIR LE BACKGROUND */
+  background: transparent;
   border: 2px solid #222;
   box-shadow: 0 0 20px #000;
 }
