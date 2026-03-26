@@ -144,3 +144,205 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- CONTENEUR PRINCIPAL DES OPTIONS --- */
+.option-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* --- NAVIGATION (BOUTONS AUDIO, VIDEO, JEU) --- */
+.option-menu {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #888;
+  padding: 10px 25px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.tab-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* --- SECTIONS DE CONTENU --- */
+.tab-content {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.tab-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #00eaff; /* Cyan pour les titres de sections */
+  text-transform: uppercase;
+}
+
+/* --- ÉLÉMENTS D'OPTION (LABEL + CURSEUR) --- */
+.option-item {
+  margin-bottom: 25px;
+}
+
+.option-item label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: #bbb;
+}
+
+/* LE CADRE BLANC (Slider Box) */
+.slider-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #ffffff; /* Le contour blanc comme le bouton retour */
+  border-radius: 12px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* --- LE CURSEUR (INPUT RANGE) --- */
+.custom-slider {
+  -webkit-appearance: none;
+  flex-grow: 1; /* Prend toute la place libre */
+  height: 4px;
+  background: #333;
+  outline: none;
+  border-radius: 2px;
+}
+
+/* Le bouton du curseur (Pion) */
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #ff0033; /* Rouge Glitch */
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff0033;
+}
+
+/* Le chiffre du pourcentage */
+#diff-value, #volume-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* --- BOUTON RETOUR (En bas) --- */
+.btn-back-container {
+  margin-top: 50px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Obligatoire : prend toute la hauteur de l'écran */
+  overflow: hidden; /* Empêche le scroll de la page entière */
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+/* --- 1. ZONE HAUTE (Fixe, pas de glitch de position) --- */
+.credits-header {
+  flex: 0 0 auto; /* Ne s'étire pas */
+  text-align: center;
+  padding: 30px 0;
+  z-index: 10; /* Toujours au-dessus */
+  position: relative;
+  background-color: #000; /* Cache les crédits qui passent derrière */
+}
+
+/* --- 2. ZONE MILIEU (La fenêtre de défilement) --- */
+.credits-main-container {
+  flex: 1 1 auto; /* Prend tout l'espace central disponible */
+  width: 100%;
+  overflow: hidden; /* Cache ce qui dépasse */
+  position: relative;
+  
+  /* Effet de fondu en haut et en bas (Néon Style) */
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+/* LA LISTE QUI BOUGE (On enlève position: absolute) */
+.credits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px; /* Espace entre les blocs */
+  text-align: center;
+  
+  /* Animation propre */
+  animation: scrollCredits 20s linear infinite; /* 20s = vitesse, à ajuster */
+}
+
+/* Animation simplifiée et robuste */
+@keyframes scrollCredits {
+  0%   { transform: translateY(80vh); } /* Démarre juste sous le header */
+  100% { transform: translateY(-120%); } /* Monte jusqu'à disparaître complètement */
+}
+
+/* --- 3. ZONE BASSE (Fixe) --- */
+.credits-footer {
+  flex: 0 0 auto; /* Ne s'étire pas */
+  text-align: center;
+  padding: 20px 0 40px; /* Plus d'espace en bas */
+  z-index: 10;
+  position: relative;
+  background-color: #000; /* Cache les crédits qui passent derrière */
+}
+
+/* --- AJUSTEMENTS STYLES --- */
+.credits-header .glitch {
+  margin-bottom: 10px;
+}
+
+.credits-header .subtitle {
+  margin: 5px 0;
+  opacity: 0.8;
+}
+
+.credit-section h3 {
+  color: #ff0033; /* Rouge pour les titres de rôles */
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.credit-section p {
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.5rem;
+  margin: 5px 0;
+}
