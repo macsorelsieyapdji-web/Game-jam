@@ -5,16 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nothing is Safe – Jeu</title>
 
-  <!-- Style principal -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body.game {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    body.game canvas {
+      display: block;
+      width: 960px;
+      height: 540px;
+      border: 2px solid #222;
+      box-shadow: 0 0 30px #000;
+    }
+  </style>
 </head>
 
 <body class="game">
 
-  <!-- Canvas du jeu -->
   <canvas id="gameCanvas" width="960" height="540"></canvas>
 
-  <!-- Scripts du jeu -->
   <script src="js/utils.js"></script>
   <script src="js/sounds.js"></script>
   <script src="js/player.js"></script>
