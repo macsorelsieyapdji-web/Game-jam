@@ -201,16 +201,15 @@ function drawHUD() {
 }
 
 function drawGameOver() {
-    ctx.fillStyle = "rgba(0,0,0,0.6)";
+    // On affiche l'élément HTML créé précédemment
+    const screen = document.getElementById("gameOverScreen");
+    if (screen) {
+        screen.style.display = "block";
+    }
+    
+    // On peut quand même assombrir le canvas en dessous
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#ff0000";
-    ctx.font = "48px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
-
-    ctx.font = "20px Arial";
-    ctx.fillText("Appuie sur R pour recommencer", canvas.width / 2, canvas.height / 2 + 40);
 }
 
 window.addEventListener("keydown", (e) => {
@@ -224,3 +223,21 @@ window.addEventListener("keydown", (e) => {
 });
 
 initGame();
+
+
+document.getElementById("restartBtn").addEventListener("click", () => {
+    // 1. Cacher l'écran de Game Over
+    document.getElementById("gameOverScreen").style.display = "none";
+    
+    // 2. Réinitialiser les scores et niveaux (si tu veux repartir de zéro)
+    level = 1;
+    money = 0;
+    localStorage.setItem("currentLevel", 1);
+    localStorage.setItem("money", 0);
+    
+    // 3. Relancer le jeu
+    resetGameState();
+    player = new Player(100, canvas.height - 138); // On recrée un joueur tout neuf
+    startNewRound();
+    gameOver = false;
+});

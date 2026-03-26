@@ -33,6 +33,13 @@
 
   <canvas id="gameCanvas" width="960" height="540"></canvas>
 
+  <div id="gameOverScreen" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(0,0,0,0.85); padding: 40px; border: 2px solid #ff0033; border-radius: 15px; box-shadow: 0 0 30px #ff0033;">
+    <h1 style="color: #ff0033; font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 20px;">GAME OVER</h1>
+    <button id="restartBtn" class="btn-main" style="cursor: pointer;">🔄 RECOMMENCER</button>
+    <button onclick="location.href='index.html'" class="btn-secondary" style="margin-top: 10px; display: block; width: 100%;">🏠 MENU PRINCIPAL</button>
+</div>
+
+
   <script src="js/utils.js"></script>
   <script src="js/sounds.js"></script>
   <script src="js/player.js"></script>
