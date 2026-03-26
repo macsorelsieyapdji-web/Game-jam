@@ -200,17 +200,42 @@ function drawHUD() {
     ctx.fillText("🧟 " + remaining, 20, 105);
 }
 
+// AFFICHER L'ÉCRAN DE FIN AVEC LES SCORES
 function drawGameOver() {
-    // On affiche l'élément HTML créé précédemment
     const screen = document.getElementById("gameOverScreen");
-    if (screen) {
+    const lvlDisplay = document.getElementById("finalLevel");
+    const moneyDisplay = document.getElementById("finalMoney");
+
+    if (screen && lvlDisplay && moneyDisplay) {
+        lvlDisplay.innerText = level;
+        moneyDisplay.innerText = money;
         screen.style.display = "block";
     }
     
-    // On peut quand même assombrir le canvas en dessous
-    ctx.fillStyle = "rgba(0,0,0,0.5)";
+    // On fige le rendu du jeu en dessous
+    ctx.fillStyle = "rgba(0,0,0,0.6)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+
+// LOGIQUE DU BOUTON RECOMMENCER
+document.getElementById("restartBtn").addEventListener("click", () => {
+    // 1. Cacher l'écran
+    document.getElementById("gameOverScreen").style.display = "none";
+    
+    // 2. Remettre les variables à zéro
+    level = 1;
+    money = 0;
+    localStorage.setItem("currentLevel", 1);
+    localStorage.setItem("money", 0);
+    
+    // 3. Réinitialiser le jeu (on recrée le joueur et les zombies)
+    gameOver = false;
+    resetGameState();
+    player = new Player(100, canvas.height - 138); 
+    startNewRound();
+    
+    console.log("Partie réinitialisée !");
+});
 
 window.addEventListener("keydown", (e) => {
     if ((e.key === "r" || e.key === "R") && gameOver) {
