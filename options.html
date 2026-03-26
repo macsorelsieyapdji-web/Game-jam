@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Option</title>
     <link rel="stylesheet" href="style.css">
+    <script src="js/openTab.js"></script>
+    <script src="js/difficulty.js"></script>
 </head>
 
 <body class="home">
@@ -21,6 +23,7 @@
             <button class="tab-btn" onclick="openTab(event, 'gameplay')">JEU</button>
         </nav>
         
+        <!--categorie audio-->
         <div class="option-content">
             <div id="audio" class="tab-content" style="display:block;">
                 <h3>Parametre audio</h3>
@@ -29,7 +32,8 @@
                     <input type="range" class="custom-slider">
                 </div>
             </div>
-
+                
+            <!--catégorie video-->
             <div id="video" class="tab-content" style="display:none;">
                 <h3>Parametre video</h3>
                 <div class="option-item">
@@ -37,26 +41,26 @@
                     <input type="range" class="custom-slider">
                 </div>
             </div>
+           
+            <!--categorie jeu-->
+            <div id="gameplay" class="tab-content" style="display:none;">
+                <h3>Parametre Jeu</h3>
+
+                <div class="option-item">
+                    <!--Curseur de réglage de la difficulté-->
+                        <label for="difficulty">Difficulté</label>
+                        <div class="slider-box">
+                            <input type="range" id="difficulty" name="difficulty" min="0" max="100" value="50" class="custom-slider">
+                            <span id="diff-value">50%</span>
+                        </div>
+            </div>
         </div>
     </div>
-
-    <!--fefefefe-->
-    <div class="btn-secondary">
-
-    </div>
-
-    <!--Curseur de réglage de la difficulté-->
-        <div class="btn-secondary">
-            <label for="difficulte">Difficulté</label>
-            <input type="range" id="difficulte" name="difficulte" min="0" max="100" value="50" class="custom-slider">
-            <span id="volume-value">50%</span>
-        </div>
 
     <!--bouton de retour au menu principal-->
     <button class="btn-secondary" onclick="location.href='index.html'">
         ⬅ Retour au menu
       </button>
     </div>
-    <script src="openTab.js"></script>
 </body>
 </html>
