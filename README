@@ -1,0 +1,7 @@
+# 🎮 Nothing is Safe
+
+**Nothing is Safe** est un shooter 2D roguelite développé en 1 mois dans le cadre d'une Game Jam par une équipe de 4 développeurs : Mac Sorel Sieyapdji, Vladimir Joel, Aboubacar Dewa et Maxwell Shayton. Chacun a contribué au développement, avec des rôles complémentaires couvrant le game design, le graphisme et le son.
+
+Le jeu repose sur une boucle simple mais addictive : survive à des vagues de zombies, bats un boss tous les deux niveaux, puis améliore ton personnage en boutique avant de repartir au combat. Les contrôles sont minimalistes — Q/D pour se déplacer, Z pour sauter, Espace pour tirer — et la difficulté augmente progressivement à chaque round.
+
+Le projet est entièrement construit en HTML5, CSS3 et JavaScript vanilla, sans framework. La logique est répartie en 7 fichiers JS (game, player, zombie, boss, collisions, sounds, shop) et utilise le LocalStorage pour sauvegarder la progression. Pour lancer le jeu, il suffit d'ouvrir `index.html` dans un navigateur, idéalement via un serveur local comme Live Server sur VS Code.
