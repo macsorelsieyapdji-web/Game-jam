@@ -21,6 +21,7 @@ class Boss {
     }
 
     update() {
+        // Appliquer la gravite
         this.vy += this.gravity;
         this.y += this.vy;
 
@@ -30,9 +31,10 @@ class Boss {
             this.vy = 0;
         }
 
-        if (this.shootCooldown > 0) this.shootCooldown--;
+        // Gestion du tir
+        if (this.shootCooldown > 0) this.shootCooldown--; // diminue le temps d'attente
         if (this.shootCooldown === 0) {
-            this.shoot();
+            this.shoot(); 
             this.shootCooldown = 40;
         }
     }
