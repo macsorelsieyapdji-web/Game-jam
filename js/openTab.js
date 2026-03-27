@@ -1,3 +1,6 @@
+// Gestion du curseur en temps reel
+
+// Ecoute les saisie ("input") sur effectuer sur la page
 document.addEventListener('input', function (event) {
     if (event.target.id === 'difficulty') {
         const value = event.target.value;
