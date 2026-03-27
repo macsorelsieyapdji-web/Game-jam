@@ -21,22 +21,27 @@ class Zombie {
     update(player) {
         if (!this.alive) return;
 
+        // Calcul du déplacement vers le joueur
         const dx = player.x - this.x;
         const dy = player.y - this.y;
         const dist = Math.hypot(dx, dy) || 1;
 
+        //Déplacement fluide vers le joueur
         this.x += (dx / dist) * this.speed;
 
+        // Gestion de la gravité
         this.vy += this.gravity;
         this.y += this.vy;
 
+        //Collision avec le sol
         const groundLevel = canvas.height - 80 - this.height;
         if (this.y >= groundLevel) {
-            this.y = groundLevel;
-            this.vy = 0;
+            this.y = groundLevel; // On force le zombie a rester au sol
+            this.vy = 0; // on arrete la chute
         }
     }
 
+    // affichage du zombie
     draw(ctx) {
         if (!this.alive) return;
 
